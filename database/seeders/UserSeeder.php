@@ -6,6 +6,7 @@ use App\Models\Role;
 use App\Models\User;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\Hash;
 
 class UserSeeder extends Seeder
 {
@@ -20,7 +21,7 @@ class UserSeeder extends Seeder
             ['email' => 'admin@example.com'],
             [
                 'name' => 'Admin',
-                'password' => bcrypt('admin'),
+                'password' => Hash::make('admin'),
                 'role_id' => Role::where('slug', 'admin')->first()->id,
             ]
         );
@@ -29,7 +30,7 @@ class UserSeeder extends Seeder
             ['email' => 'user@example.com'],
             [
                 'name' => 'User',
-                'password' => bcrypt('user'),
+                'password' => Hash::make('user'),
                 'role_id' => Role::where('slug', 'user')->first()->id,
             ]
         );
