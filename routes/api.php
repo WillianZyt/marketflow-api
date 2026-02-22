@@ -2,6 +2,13 @@
 
 use Illuminate\Support\Facades\Route;
 
-Route::get('/hello-world', function () {
-    return 'hello world';
+Route::prefix('v1')->group(function () {
+
+    Route::get('/health', function () {
+        return response()->json([
+            'status' => 'ok',
+            'service' => 'MarketFlow API',
+        ]);
+    });
+
 });

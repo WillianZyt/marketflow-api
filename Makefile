@@ -4,11 +4,15 @@ ARTISAN := $(PHP) artisan
 DOCKER_COMPOSE := docker compose
 EXEC_APP := $(DOCKER_COMPOSE) exec app
 
-.PHONY: update-db cache-clear build regenerate fx help
+.PHONY: migrate seed cache help
 
-# Update database
+# Update the database schema
 db:
-	$(EXEC_APP) $(ARTISAN) doctrine:schema:update --force --dump-sql --complete
+	$(EXEC_APP) $(ARTISAN) migrate --force
+
+# Run database seeders
+sd:
+	$(EXEC_APP) $(ARTISAN) db:seed --force
 
 # Clear cache
 cache:
@@ -16,5 +20,8 @@ cache:
 
 help:
 	@echo "Makefile commands:"
-	@echo "  make db       - Update the database schema"
-	@echo "  make cache    - Clear the application cache"
+	@echo "  make help	- Show this help message"
+	@echo "  make db	- Run database migrations"
+	@echo "  make sd	- Run database seeders"
+	@echo "  make cache	- Clear application cache"
+
