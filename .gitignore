@@ -1,0 +1,32 @@
+# Composer
+/vendor
+
+# NPM/Yarn
+/node_modules
+
+# Env files
+.env
+.env.*.backup
+
+# Cache and logs
+/storage/*.key
+/storage/app/public
+/storage/framework/*
+!/storage/framework/.gitignore
+/storage/logs/*
+!/storage/logs/.gitignore
+
+# Laravel cache
+/bootstrap/cache/*
+!/bootstrap/cache/.gitignore
+
+# IDE
+.idea
+.vscode
+
+# Temporary files
+*.log
+*.cache
+*.phpunit.result.cache
+.phpunit.cache
+.DS_Store
